@@ -1,0 +1,37 @@
+[
+    {
+      "title": "El Señor de los Anillos: La Comunidad del Anillo",
+      "rating": 5,
+      "tags": ["fantasía", "aventura", "épica"]
+    },
+    {
+      "title": "Harry Potter y la Piedra Filosofal",
+      "rating": 4,
+      "tags": ["fantasía", "aventura", "magia", "favorita"]
+    },
+    {
+      "title": "Pulp Fiction",
+      "rating": 5,
+      "tags": ["crimen", "drama", "clásico"]
+    },
+    {
+      "title": "El Castillo Ambulante",
+      "rating": 4.5,
+      "tags": ["animación", "fantasía", "aventura"]
+    },
+    {
+      "title": "Matrix",
+      "rating": 4,
+      "tags": ["ciencia ficción", "acción", "clásico"]
+    },
+    {
+      "title": "Interestelar",
+      "rating": 4.8,
+      "tags": ["ciencia ficción", "drama", "aventura"]
+    },
+    {
+      "title": "La La Land",
+      "rating": 3.5,
+      "tags": ["musical", "drama", "romance"]
+    }
+  ]
