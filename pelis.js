@@ -1,55 +1,44 @@
-const fs = require('node:fs');
-const path = require('node:path');
+// pelis.js
+// Dependencias de lectura de archivos
+const fs   = require('fs');
+const path = require('path');
 
-function leerPeliculas() {
-  try {
-    const data = fs.readFileSync(path.join(__dirname, 'pelis.json'), 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Error al leer el archivo pelis.json:', error);
-    return [];
-  }
-}
+// 1) Leemos el JSON
+const archivo = fs.readFileSync(path.join(__dirname, 'pelis.json'), 'utf-8');
+const peliculas = JSON.parse(archivo);
 
+// 2) Funciones requeridas
 function listarPeliculas() {
-  return leerPeliculas();
+  return peliculas;
 }
 
 function ordenarPeliculas(propiedad) {
-  const peliculas = leerPeliculas();
-  return peliculas.sort((a, b) => {
-    const valorA = typeof a[propiedad] === 'string' ? a[propiedad].toLowerCase() : a[propiedad];
-    const valorB = typeof b[propiedad] === 'string' ? b[propiedad].toLowerCase() : b[propiedad];
-
-    if (valorA < valorB) {
-      return -1;
-    }
-    if (valorA > valorB) {
-      return 1;
-    }
+  // copia y ordena según propiedad (title, rating, etc.)
+  return [...peliculas].sort((a, b) => {
+    if (a[propiedad] < b[propiedad]) return -1;
+    if (a[propiedad] > b[propiedad]) return 1;
     return 0;
   });
 }
 
 function buscarPeliculas(texto) {
-  const peliculas = leerPeliculas();
-  const textoLower = texto.toLowerCase();
-  return peliculas.filter(pelicula =>
-    pelicula.title.toLowerCase().includes(textoLower)
+  return peliculas.filter(p =>
+    p.title.toLowerCase().includes(texto.toLowerCase())
   );
 }
 
 function filtrarPorTag(tag) {
-  const peliculas = leerPeliculas();
-  const tagLower = tag.toLowerCase();
-  return peliculas.filter(pelicula =>
-    pelicula.tags.map(t => t.toLowerCase()).includes(tagLower)
+  return peliculas.filter(p =>
+    p.tags.map(t => t.toLowerCase()).includes(tag.toLowerCase())
   );
 }
 
+// 3) Exportamos todo
 module.exports = {
   listarPeliculas,
   ordenarPeliculas,
   buscarPeliculas,
-  filtrarPorTag,
+  filtrarPorTag
 };
+
+
